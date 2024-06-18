@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import ReduxProvider from '@/src/shared/store/ReduxProvider';
 import { RemResizeScript } from '@/src/features/rem-resize';
 import Navbar from '@/src/widgets/navbar';
-import Footer from '@/src/widgets/footer';
 
 // import 'swiper/css';
 // import 'swiper/css/navigation';
