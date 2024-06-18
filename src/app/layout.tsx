@@ -51,7 +51,7 @@ export default function RootLayout({ children, ...rest }: RootLayoutProps) {
             <div className={''}>
               <Navbar />
               <div className={'pt-10 md:px-10 px-1'}>{children}</div>
-              <Footer />
+              {/*<Footer />*/}
             </div>
           </div>
         </ReduxProvider>

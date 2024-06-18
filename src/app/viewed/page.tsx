@@ -18,11 +18,9 @@ export default function Home() {
       <main>
         <div className={'flex items-center p-3 gap-3'}>
           <SavedIcon className={'w-4'} />
-          <p className={'md:text-xl text-white font-bold'}>
-            Прочитанные статьи
-          </p>
+          <p className={'md:text-xl text-white font-bold'}>Viewed posts</p>
         </div>
-        <PostsBlock displaySaveBtn={true} posts={savedPosts} />
+        <PostsBlock locale={'en'} displaySaveBtn={true} posts={savedPosts} />
       </main>
     </>
   );

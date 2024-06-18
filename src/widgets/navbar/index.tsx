@@ -25,20 +25,20 @@ const Navbar: FC = () => {
 
   const linksEn = [
     {
-      link: 'en/new',
+      link: 'new',
       name: 'New articles',
     },
     {
-      link: 'en/saved',
+      link: 'saved',
       name: 'Saved',
     },
     {
-      link: 'en/viewed',
+      link: 'viewed',
       name: 'Viewed',
     },
   ];
 
-  const isEnglish = usePathname().includes('/en');
+  const isEnglish = true;
 
   const links = isEnglish ? linksEn : linksRu;
 
@@ -87,7 +87,7 @@ const Navbar: FC = () => {
           <BurgerIcon className={cvaBurgerIcon()} />
         </div>
         <div className={cvaLogo()}>
-          <Link href={isEnglish ? '/en/new' : '/'}>
+          <Link href={'/'}>
             <img src={'/images/logo.png'} />
           </Link>
         </div>
