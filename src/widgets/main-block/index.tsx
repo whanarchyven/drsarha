@@ -5,6 +5,46 @@ interface MainBlockInterface {
 }
 
 const MainBlock: FC<MainBlockInterface> = ({ locale }) => {
+  const data = new Map();
+  data.set('en', {
+    title: (
+      <p
+        className={
+          'md:text-xl md:text-left text-sm text-center font-extrabold'
+        }>
+        Thank you for your interest
+        <br />
+        in the world of pediatric dermatology!
+      </p>
+    ),
+    description: (
+      <p className={'md:text-md md:text-left text-center text-xs'}>
+        All the most relevant and up-to-date articles <br />
+        will now be available to you every day.
+      </p>
+    ),
+  });
+  data.set('fr', {
+    title: (
+      <p
+        className={
+          'md:text-xl md:text-left text-sm text-center font-extrabold'
+        }>
+        Merci de votre intérêt pour le monde
+        <br />
+        de la dermatologie pédiatrique !
+      </p>
+    ),
+    description: (
+      <p className={'md:text-md md:text-left text-center text-xs'}>
+        Tous les articles les plus pertinents et les plus <br />
+        récents seront désormais disponibles pour vous chaque jour.
+      </p>
+    ),
+  });
+
+  const pageData = data.get(locale);
+
   return (
     <div
       className={
@@ -15,28 +55,8 @@ const MainBlock: FC<MainBlockInterface> = ({ locale }) => {
           className={'w-1/2 flex md:hidden'}
           src={'/images/logo_square.png'}
         />
-        {locale == 'en' ? (
-          <p
-            className={
-              'md:text-xl md:text-left text-sm text-center font-extrabold'
-            }>
-            Thank you for your interest
-            <br />
-            in the world of pediatric dermatology!
-          </p>
-        ) : (
-          <p
-            className={
-              'md:text-xl md:text-left text-sm text-center font-extrabold'
-            }>
-            Спасибо за ваш интерес
-            <br />к миру детской дерматологии!
-          </p>
-        )}
-        <p className={'md:text-md md:text-left text-center text-xs'}>
-          All the most relevant and up-to-date articles <br />
-          will now be available to you every day.
-        </p>
+        {pageData.title}
+        {pageData.description}
       </div>
       <img
         className={'absolute hidden md:flex h-full right-0 top-0'}

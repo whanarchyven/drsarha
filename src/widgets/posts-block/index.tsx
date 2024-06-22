@@ -86,6 +86,20 @@ const PostsBlock: FC<postsBlockInterface> = ({
     }
   };
 
+  const langs = new Map();
+  langs.set('en', {
+    options: ['Dermatology', 'Pediatric', 'Venereology'],
+    placeholder: 'Search...',
+    title: 'New articles',
+  });
+  langs.set('fr', {
+    options: ['Dermatologie', 'Pédiatrie', 'Vénérologie'],
+    placeholder: 'Recherche...',
+    title: 'Nouveaux articles',
+  });
+
+  const data = langs.get(locale);
+
   return (
     <div className={'mt-2 pb-10'}>
       <div className={'flex justify-between gap-1 md:gap-4'}>
@@ -93,17 +107,13 @@ const PostsBlock: FC<postsBlockInterface> = ({
           className={'w-1/3'}
           mutateFunc={setCategory}
           value={category}
-          options={
-            locale == 'en'
-              ? ['Dermatology', 'Pediatric', 'Venereology']
-              : ['Дерматология', 'Педиатрия', 'Дермато-венерология']
-          }
+          options={data.options}
         />
         <SearchInput
           className={'w-2/3 md:w-full'}
           mutateFunc={setSearchString}
           value={searchString}
-          placeholder={locale == 'en' ? 'Search...' : 'Поиск...'}
+          placeholder={data.placeholder}
         />
         <GridPicker
           className={'hidden md:flex'}
@@ -117,7 +127,7 @@ const PostsBlock: FC<postsBlockInterface> = ({
           className={
             'my-4 text-white md:text-left text-center md:pl-4 font-bold'
           }>
-          {locale == 'en' ? 'New articles' : 'Новые статьи'}
+          {data.title}
         </p>
       )}
       <div className={cvaPostGrid({ mode: gridDisplayMode })}>

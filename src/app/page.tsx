@@ -1,5 +1,4 @@
 'use client';
-import MainBlock from '@/src/widgets/main-block';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -11,9 +10,7 @@ export default function Home() {
 
   return (
     <>
-      <main>
-        <MainBlock />
-      </main>
+      <main>{/*<MainBlock />*/}</main>
     </>
   );
 }

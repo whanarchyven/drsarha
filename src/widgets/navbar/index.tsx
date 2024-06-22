@@ -8,18 +8,18 @@ import { cva } from 'class-variance-authority';
 import { usePathname } from 'next/navigation';
 
 const Navbar: FC = () => {
-  const linksRu = [
+  const linksFR = [
     {
-      link: 'new',
-      name: 'Новые статьи',
+      link: 'fr/new',
+      name: 'Nouveaux articles',
     },
     {
-      link: 'saved',
-      name: 'Сохраненное',
+      link: 'fr/saved',
+      name: 'Enregistré',
     },
     {
-      link: 'viewed',
-      name: 'Прочитанное',
+      link: 'fr/viewed',
+      name: 'Lu',
     },
   ];
 
@@ -38,11 +38,13 @@ const Navbar: FC = () => {
     },
   ];
 
-  const isEnglish = true;
+  const pathname = usePathname();
 
-  const links = isEnglish ? linksEn : linksRu;
+  const isFrench = pathname.includes('/fr');
 
-  const name = 'Профиль';
+  const links = isFrench ? linksFR : linksEn;
+
+  const name = 'Profile';
 
   const cvaRoot = cva([
     'w-full fixed z-[9999] left-0 md:px-8 px-2 mb-3 py-2 bg-black rounded-b-3xl bg-opacity-[0.15] backdrop-blur-xl',
@@ -72,7 +74,6 @@ const Navbar: FC = () => {
   const cvaBurgerIcon = cva(['w-2']);
 
   // const router=useRouter()
-  const pathname = usePathname();
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -87,7 +88,7 @@ const Navbar: FC = () => {
           <BurgerIcon className={cvaBurgerIcon()} />
         </div>
         <div className={cvaLogo()}>
-          <Link href={'/'}>
+          <Link href={isFrench ? '/fr/new' : '/'}>
             <img src={'/images/logo.png'} />
           </Link>
         </div>
@@ -106,7 +107,7 @@ const Navbar: FC = () => {
         <div className={cvaAccountContainer()}>
           <AccountIcon className={cvaAccountIcon()} />
           <p className={cvaLinkLabel({ isActive: false })}>
-            {isEnglish ? 'Profile' : name}
+            {isFrench ? 'Profil' : name}
           </p>
         </div>
       </div>
